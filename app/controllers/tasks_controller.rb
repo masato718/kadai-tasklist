@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy] 
+  before_action :set_task, only: [:show, :edit, :update, :destroy] 
+  
   def index
     @tasks = Task.all
   end
@@ -16,10 +17,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:success] = 'タスク が追加されました'
+      flash[:success] = 'タスク が作成されました'
       redirect_to @task
     else
-      flash.now[:danger] = 'タスク が追加されませんでした'
+      flash.now[:danger] = 'タスク が作成されませんでした'
       render :new
     end
   end
@@ -47,9 +48,11 @@ class TasksController < ApplicationController
   end
 
   
-    private
-  def set_message
-    @message = Message.find(params[:id])
+  private
+  
+    
+  def set_task
+    @task = Task.find(params[:id])
   end
 
   # Strong Parameter
