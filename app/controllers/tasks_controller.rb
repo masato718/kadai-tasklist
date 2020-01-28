@@ -11,7 +11,7 @@ class TasksController < ApplicationController
   end
 
   def show
-  
+      
   end
 
   def new
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     flash[:success] = 'タスク は正常に削除されました'
-    redirect_back(fallback_location: root_path)
+    redirect_to tasks_path
   end
 
   
